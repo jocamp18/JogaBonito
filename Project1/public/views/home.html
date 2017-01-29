@@ -1,0 +1,18 @@
+<!--<div class="jumbotron text-center">
+    <h1>Home Page 4 Life</h1>
+
+    <p>{{ tagline }}</p>
+</div>-->
+
+
+<form action="/new" method="POST">
+	<label for="position">Position: </label>
+	<select ng-model="position" name="position">
+		<option ng-repeat="pos in positions" value="{{pos}}">{{pos}}</option>
+	</select><br>
+	<label for="date">Date: </label>
+	<input ng-model="date" name="date" type="date"><br>
+	<label for="time1">Time: </label>
+	<input ng-model="time1" name="time1" type="time"><br>
+	<input type="submit"/>
+</form>
