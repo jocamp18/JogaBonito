@@ -1,1 +1,1 @@
-angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'NerdCtrl', 'NerdService', 'LoginCtrl', 'RegisterCtrl'])
+angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'MatchCtrl', 'NerdService', 'LoginCtrl', 'RegisterCtrl', 'MyMatchesCtrl'])

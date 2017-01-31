@@ -18,36 +18,53 @@ router.get('/matches',function(req, res, next){
 
 
 
-var Match = require('./models/match');
+var Match = require('../models/match');
 var mongoose = require('mongoose');
-var db = require('./config/db');
+var db = require('../config/db');
 mongoose.connect(db.url); 
     module.exports = function(app) {
 
         // server routes ===========================================================
         // handle things like api calls
         // authentication routes
-        app.post('/new', function(req, res){
-            var del = new Match({
+        var sess;
+        app.post('/newMatch', function(req, res){
+            sess = req.session;
+            var username = sess.username;
+            var newMatch = new Match({
+                username: username,
                 position: req.body.position,
                 date    : req.body.date,
                 time    : req.body.time1
             });
-            del.save(function(err){
+            newMatch.save(function(err){
                 if(err) throw err;
+                res.redirect('/');
             });
         });
+        app.get('/myMatches', function(req, res){
+            sess = req.session;
+            var username = sess.username;
+            console.log("Match " + username);
+            if(username){
+                Match.find({username: username}, function(err, matches){
+                    if(err){
+                        res.send(err);
+                    }
+                    res.json(matches);
+                })
+            }
+        })
         // sample api route
         app.get('/api/matches', function(req, res) {
             // use mongoose to get all nerds in the database
-            Match.find(function(err, matches) {
-
-                // if there is an error retrieving, send the error. 
-                                // nothing after res.send(err) will execute
+            Match.find({},function(err, docs) {
                 if (err)
                     res.send(err);
-                res.json(matches); // return all nerds in JSON format
+                res.json(docs);
+                //res.render('index', {matches: docs}); // return all nerds in JSON format
             });
+            
         });
 
         // route to handle creating goes here (app.post)
@@ -56,7 +73,7 @@ mongoose.connect(db.url);
         // frontend routes =========================================================
         // route to handle all angular requests
         app.get('*', function(req, res) {
-            res.sendfile('./public/views/index.html'); // load our public/index.html file
+            res.sendfile('../public/index.html'); // load our public/index.html file
         });
 
     };

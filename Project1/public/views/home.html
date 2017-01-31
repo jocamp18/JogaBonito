@@ -5,7 +5,8 @@
 </div>-->
 
 
-<form action="/new" method="POST">
+<form action="/newMatch" method="POST">
+	{{username}}
 	<label for="position">Position: </label>
 	<select ng-model="position" name="position">
 		<option ng-repeat="pos in positions" value="{{pos}}">{{pos}}</option>
@@ -13,6 +14,8 @@
 	<label for="date">Date: </label>
 	<input ng-model="date" name="date" type="date"><br>
 	<label for="time1">Time: </label>
-	<input ng-model="time1" name="time1" type="time"><br>
+	<select ng-model="time1" name="time1">
+		<option ng-repeat="time in times" value="{{time}}">{{time}}</option>
+	</select><br>
 	<input type="submit"/>
 </form>

@@ -5,7 +5,9 @@ var express        = require('express');
 var app            = express();
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
-
+var cookieParser   = require('cookie-parser');
+var session        = require('express-session');
+var engines 	   = require('consolidate');
 // configuration ===========================================
     
 // config files
@@ -16,6 +18,13 @@ var port = process.env.PORT || 8080;
 
 // connect to our mongoDB database 
 // (uncomment after you enter in your own credentials in config/db.js)
+
+app.engine('html', engines.hogan);
+app.set('view engine', 'html');
+app.set('views', __dirname + '/public');
+
+app.use(cookieParser("'+crypto.randomBytes(64)+"));
+app.use(session());
 
 // get all data/stuff of the body (POST) parameters
 // parse application/json 
@@ -34,7 +43,8 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.static(__dirname + '/public')); 
 
 // routes ==================================================
-require('./routesMatch')(app); // configure our routes
+require('./routes/Match')(app); // configure our routes
+require('./routes/User')(app);
 
 // start app ===============================================
 // startup our app at http://localhost:8080

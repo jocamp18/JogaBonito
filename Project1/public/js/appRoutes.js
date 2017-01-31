@@ -9,9 +9,9 @@
         })
 
         // nerds page that will use the NerdController
-        .when('/nerds', {
-            templateUrl: 'views/nerd.html',
-            controller: 'NerdController'
+        .when('/matches', {
+            templateUrl: 'views/matches.html',
+            controller: 'MatchController'
         })
 
         .when('/login', {
@@ -22,6 +22,11 @@
         .when('/register', {
             templateUrl: "views/register.html",
             controller: 'RegisterController'
+        })
+
+        .when('/myProfile', {
+            templateUrl: 'views/myMatches.html',
+            controller: 'MyMatchesController'
         });
 
     $locationProvider.html5Mode(true);
