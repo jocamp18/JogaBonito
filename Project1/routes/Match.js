@@ -67,6 +67,29 @@ mongoose.connect(db.url);
             
         });
 
+        app.post('/deleteMatch/:id', function(req, res) {
+            var id = req.params.id;
+            Match.findOneAndRemove({"_id": id}, function (err) {
+                if(err) throw err;
+            })
+            Match.find({},function(err, docs) {
+                if (err)
+                    res.send(err);
+                res.json(docs);
+                //res.render('index', {matches: docs}); // return all nerds in JSON format
+            });  
+        })
+
+        app.post('/update', function(req, res){
+            var id = req.body.identifier;
+            Match.findOneAndUpdate({"_id": id},{position: req.body.position, date: req.body.date, time: req.body.time1}, function (err, result) {
+                if(err) throw err;
+                console.log("Updated");
+                res.redirect('/');
+            })
+
+        })
+
         // route to handle creating goes here (app.post)
         // route to handle delete goes here (app.delete)
 
