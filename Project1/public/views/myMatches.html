@@ -20,23 +20,25 @@
 </div>
 
 <form style="display: none;" id="editForm" action="/update" method="POST">
-	<label>Id:</label>
-	<input type="text" name="identifier" ng-model="identifier" readonly="readonly"><br>
-	<label for="position">Position: </label>
-	<select ng-model="position" name="position">
-		<option ng-repeat="pos in positions" value="{{pos}}">{{pos}}</option>
-	</select><br>
-	<label for="date" >Date: </label>
-	<input ng-model="date" name="date" type="date"><br>
-	<label for="time1">Time: </label>
-	<select ng-model="time1" name="time1">
-		<option ng-repeat="time in times" value="{{time}}">{{time}}</option>
-	</select><br>
+	<label>
+		<span>Id: </span>
+		<input type="text" name="identifier" ng-model="identifier" readonly="readonly">
+	</label>
+	<label for="position">
+		<span>Position: </span>
+		<select ng-model="position" name="position">
+			<option ng-repeat="pos in positions" value="{{pos}}">{{pos}}</option>
+		</select>
+	</label>
+	<label for="date" >
+		<span>Date: </span>
+		<input ng-model="date" name="date" type="date">
+	 </label>
+	<label for="time1">
+		<span>Time: </span>
+		<select ng-model="time1" name="time1">
+			<option ng-repeat="time in times" value="{{time}}">{{time}}</option>
+		</select>
+	 </label>
 	<button ng-click="edit()" class="button">Submit</button>
 </form>
-
-
-    <form>
-        <label>User: {{username}}</label>
-        <button ng-click="logout()" class="button">Logout</button>
-    </form>

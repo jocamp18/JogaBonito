@@ -1,13 +1,19 @@
 <form action="/newMatch" method="POST">
-	<label for="position">Position: </label>
-	<select ng-model="position" name="position">
-		<option ng-repeat="pos in positions" value="{{pos}}">{{pos}}</option>
-	</select><br>
-	<label for="date">Date: </label>
-	<input ng-model="date" name="date" type="date"><br>
-	<label for="time1">Time: </label>
-	<select ng-model="time1" name="time1">
-		<option ng-repeat="time in times" value="{{time}}">{{time}}</option>
-	</select><br>
+	<label for="position">
+		<span>Position:</span>
+		<select ng-model="position" name="position">
+			<option ng-repeat="pos in positions" value="{{pos}}">{{pos}}</option>
+		</select>
+	 </label>
+	<label for="date">
+		<span>Date:</span>
+		<input ng-model="date" name="date" type="date">
+	 </label>
+	<label for="time1">
+		<span>Time:</span>
+		<select ng-model="time1" name="time1">
+			<option ng-repeat="time in times" value="{{time}}">{{time}}</option>
+		</select>
+	 </label>
 	<input type="submit" class="button" />
 </form>

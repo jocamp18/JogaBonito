@@ -3,7 +3,7 @@
     $routeProvider
 
         // home page
-        .when('/', {
+        .when('/home', {
             templateUrl: 'views/home.html',
             controller: 'MainController'
         })
@@ -14,7 +14,7 @@
             controller: 'MatchController'
         })
 
-        .when('/login', {
+        .when('/', {
             templateUrl: "views/login.html",
             controller: 'LoginController'
         })

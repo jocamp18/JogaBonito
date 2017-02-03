@@ -26,22 +26,13 @@ module.exports = function(app){
 		sess.username = username;
 		userToSend = User.findOne({username: username, password: password}, function(err, user){
 			if(err){
-				throw err;
-				res.redirect('/login');
+				res.redirect('/');
 			}
 			if(!user){
-				res.redirect('/login');
+				res.redirect('/');
 			}
 			res.redirect('/');
 			//res.render('index', {msg : username});
 		});
 	});
-	app.get('/final', function(req, res) {
-        User.find({},function(err, docs) {
-                if (err)
-                    res.send(err);
-                res.json(docs);
-                //res.render('index', {matches: docs}); // return all nerds in JSON format
-            });
-    });
 }

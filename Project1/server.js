@@ -19,10 +19,10 @@ var port = process.env.PORT || 8080;
 // connect to our mongoDB database 
 // (uncomment after you enter in your own credentials in config/db.js)
 
-app.engine('html', engines.hogan);
-app.set('view engine', 'html');
-app.set('views', __dirname + '/public');
 
+app.set('views', __dirname + '/public');
+app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
 app.use(cookieParser("'+crypto.randomBytes(64)+"));
 app.use(session());
 
@@ -53,6 +53,7 @@ app.listen(port);
 // shoutout to the user                     
 console.log('Magic happens on port ' + port);
 console.log(db.url);
+console.log(__dirname);
 
 // expose app           
-exports = module.exports = app;  
+exports = module.exports = app; 

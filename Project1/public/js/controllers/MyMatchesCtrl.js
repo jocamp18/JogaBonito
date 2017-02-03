@@ -4,7 +4,6 @@ angular.module('MyMatchesCtrl',[]).controller('MyMatchesController', function($s
 
 	$http.get('/myMatches').then(function(response){
 		$scope.myMatches = response.data;
-    	$scope.username = $scope.myMatches[0].username;
 	})
 	
 	$scope.find = function(myMatch) {
@@ -21,9 +20,4 @@ angular.module('MyMatchesCtrl',[]).controller('MyMatchesController', function($s
 		})
 	}
 
-	$scope.logout = function(){
-		$http.get('/final').then(function(response){
-			console.log(response.data);
-		});
-	}
 })

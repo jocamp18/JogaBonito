@@ -45,7 +45,6 @@ mongoose.connect(db.url);
         app.get('/myMatches', function(req, res){
             sess = req.session;
             var username = sess.username;
-            console.log("Match " + username);
             if(username){
                 Match.find({username: username}, function(err, matches){
                     if(err){
@@ -88,6 +87,21 @@ mongoose.connect(db.url);
                 res.redirect('/');
             })
 
+        })
+
+        app.get('/logout', function(req, res) {
+            req.session.destroy(function(err){
+                if(err){
+                    throw err;
+                }
+                res.redirect('/');
+            })
+        });
+        app.get('/username', function(req, res){
+            res.send(sess.username);
+        })
+        app.get('/username', function(req, res){
+            res.send(sess.username);
         })
 
         // route to handle creating goes here (app.post)
