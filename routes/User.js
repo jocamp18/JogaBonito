@@ -14,7 +14,9 @@ module.exports = function(app){
 			password  : req.body.password
 		});
 		newUser.save(function(err){
-			if(err) throw err;
+			if(err){
+				throw err;
+			}
 			res.redirect('/');
 		});
 	});
@@ -22,15 +24,17 @@ module.exports = function(app){
 	app.post('/log', function(req, res){
 		var username = req.body.username;
 		var password = req.body.password;
-		sess = req.session;
-		sess.username = username;
 		userToSend = User.findOne({username: username, password: password}, function(err, user){
 			if(err){
-				res.redirect('/');
+				return res.redirect();
 			}
 			if(!user){
-				res.redirect('/');
+				console.log("NNNNNNNOOOOOOOOOOOTTTTTTTTTT")
+				return res.redirect('/');
 			}
+			console.log("AAAAAAAAAAAAAAAACEPTED");
+			sess = req.session;
+			sess.username = username;
 			res.redirect('/');
 			//res.render('index', {msg : username});
 		});

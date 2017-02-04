@@ -31,6 +31,7 @@ mongoose.connect(db.url);
         app.post('/newMatch', function(req, res){
             sess = req.session;
             var username = sess.username;
+            console.log(req.body.position);
             var newMatch = new Match({
                 username: username,
                 position: req.body.position,
@@ -82,8 +83,6 @@ mongoose.connect(db.url);
         app.post('/update', function(req, res){
             var id = req.body.identifier;
             Match.findOneAndUpdate({"_id": id},{position: req.body.position, date: req.body.date, time: req.body.time1}, function (err, result) {
-                if(err) throw err;
-                console.log("Updated");
                 res.redirect('/');
             })
 
@@ -91,9 +90,6 @@ mongoose.connect(db.url);
 
         app.get('/logout', function(req, res) {
             req.session.destroy(function(err){
-                if(err){
-                    throw err;
-                }
                 res.redirect('/');
             })
         });

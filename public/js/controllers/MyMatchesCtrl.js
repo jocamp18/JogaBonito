@@ -10,7 +10,9 @@ angular.module('MyMatchesCtrl',[]).controller('MyMatchesController', function($s
 		document.getElementById("editForm").style.display="block";
 		$scope.identifier = myMatch._id;
 		$scope.position = myMatch.position;
-		$scope.date = new Date(myMatch.date);
+		parts = myMatch.date.split("-");
+		$scope.date = new Date(parts[0], parts[1] - 1, parts[2]);
+		console.log($scope.date);
 		$scope.time1 = myMatch.time
 	}
 	$scope.delete = function(id) {

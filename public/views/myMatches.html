@@ -3,7 +3,8 @@
 	<table id="matchesTable">
 		<tr>
 			<th> Position </th>
-			<th> Date </th>
+			<th> Date <br>
+			(yyyy-mm-dd)</th>
 			<th> Time </th>
 			<th> Operations </th>
 		</tr>
@@ -26,17 +27,17 @@
 	</label>
 	<label for="position">
 		<span>Position: </span>
-		<select ng-model="position" name="position">
+		<select ng-model="position" name="position" ng-init="position=positions[0]" required>
 			<option ng-repeat="pos in positions" value="{{pos}}">{{pos}}</option>
 		</select>
 	</label>
 	<label for="date" >
 		<span>Date: </span>
-		<input ng-model="date" name="date" type="date">
+		<input ng-model="date" name="date" type="date" required>
 	 </label>
 	<label for="time1">
 		<span>Time: </span>
-		<select ng-model="time1" name="time1">
+		<select ng-model="time1" name="time1" ng-init="time1=times[0]">
 			<option ng-repeat="time in times" value="{{time}}">{{time}}</option>
 		</select>
 	 </label>
