@@ -35,3 +35,9 @@ Application Structure
 ├── bower.json
 ├── package.json
 ├── server.js 
+
+How to download JogaBonito app?
+
+It is necesary to open a shell and type "git clone https://github.com/jocamp18/JogaBonito.git" or just downloading it from the github https://github.com/jocamp18/JogaBonito.
+
+

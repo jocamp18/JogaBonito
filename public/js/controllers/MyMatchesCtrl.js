@@ -1,7 +1,7 @@
 angular.module('MyMatchesCtrl',[]).controller('MyMatchesController', function($scope, $http){
 	$scope.positions = ['Goalkeper','Defender','Midfielder','Forward'];
 	$scope.times = ['12:00 - 14:00','14:00 - 16:00','16:00 - 18:00','18:00 - 20:00', '20:00 - 22:00'];
-
+	$scope.today = new Date();
 	$http.get('/myMatches').then(function(response){
 		$scope.myMatches = response.data;
 	})

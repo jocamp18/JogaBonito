@@ -15,7 +15,7 @@ module.exports = function(app){
 		});
 		newUser.save(function(err){
 			if(err){
-				throw err;
+				return res.redirect('/')
 			}
 			res.redirect('/');
 		});
@@ -29,10 +29,8 @@ module.exports = function(app){
 				return res.redirect();
 			}
 			if(!user){
-				console.log("NNNNNNNOOOOOOOOOOOTTTTTTTTTT")
 				return res.redirect('/');
 			}
-			console.log("AAAAAAAAAAAAAAAACEPTED");
 			sess = req.session;
 			sess.username = username;
 			res.redirect('/');
