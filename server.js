@@ -51,9 +51,9 @@ require('./routes/User')(app);
 app.listen(port);               
 
 // shoutout to the user                     
-console.log('Magic happens on port ' + port);
-console.log(db.url);
-console.log(__dirname);
+//console.log('Magic happens on port ' + port);
+//console.log(db.url);
+//console.log(__dirname);
 
 // expose app           
 exports = module.exports = app; 
